@@ -2,16 +2,25 @@
 # time complexity:  O(n)
 # space complexity: O(n)
 
-def find_pairs(ar):
+def find_groups(arr, group_size):
 
     seen = {}
-    pairs = 0
+    groups = 0
 
-    for i in range(0, len(ar)):
-        if seen.__contains__(ar[i]) == False:
-            seen[ar[i]] = None # this is just a dummy value, hence None
+    for i in range(0, len(arr)):        
+        if seen.__contains__(arr[i]) == False:
+            seen[arr[i]] = 1
+            
+        elif seen[arr[i]] + 1 == group_size:
+            del seen[arr[i]]   
+            groups += 1
+
+        # edge case: group_size = 1    
+        elif seen[arr[i]] + 1 > group_size:  
+            del seen[arr[i]]   
+            groups += 2            
+            
         else:
-            del seen[ar[i]]
-            pairs += 1
-    
-    return pairs
+            seen[arr[i]] += 1
+            
+    return groups
