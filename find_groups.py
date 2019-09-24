@@ -7,22 +7,26 @@ def find_groups(arr, group_size):
     seen = {}
     groups = 0
 
-    for i in range(0, len(arr)):         
-        if seen.__contains__(arr[i]) == False:
+    #for i in range(0, len(arr)):
+    # counter obj in stand lib 
+    for ele in arr:    
+
+        # if not ele in seen:  
+        if ele not in seen:
             """
             You wouldn't need a more complicated method to find groups of
                 size 1, but this hadnles it just in case
             """           
             if group_size != 1:
-                seen[arr[i]] = 1
+                seen[ele] = 1
             else:
                 groups += 1
             
-        elif seen[arr[i]] + 1 >= group_size:
-            del seen[arr[i]]
+        elif seen[ele] + 1 >= group_size:
+            del seen[ele]
             groups += 1                               
             
         else:
-            seen[arr[i]] += 1
+            seen[ele] += 1
             
     return groups
