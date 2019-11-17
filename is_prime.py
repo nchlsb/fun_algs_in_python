@@ -30,15 +30,14 @@ def is_prime_v1(n):
 
 def is_prime_v2(n):
 
-
-    return all(n % i != 0 for i in range(2, math.floor(math.sqrt(n)) + 2)) # second arg not inclusive 
+    return n > 1 and all(n % i != 0 for i in range(2, math.floor(math.sqrt(n))))
 
 
 """Tets start here"""
 """Future thoughts: make the test itself into a function in order to repeat w/o hard coding?"""
 
-test_num = 101740496633 
-#5915587277
+#test_num = 101740496633 
+test_num = 5915587277
 
 # Test 1
 start_time = datetime.datetime.now().time()
